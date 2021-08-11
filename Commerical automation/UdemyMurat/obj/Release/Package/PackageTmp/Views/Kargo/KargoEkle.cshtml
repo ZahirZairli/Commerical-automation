@@ -1,0 +1,39 @@
+﻿@model UdemyMurat.Models.Sınıflar.KargoDetay
+@{
+    ViewBag.Title = "KargoEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Kargo ekleme Sayfası</h2>
+<hr />
+<br />
+<form class="form-group" method="post">
+    <br />
+    @Html.LabelFor(x => x.TakipKodu)
+    <input readonly name="TakipKodu" type="text" value="@ViewBag.takipkod" class="form-control" />
+    @Html.ValidationMessageFor(x => x.TakipKodu, "", new { @style = "color:red;" })
+    @*@Html.TextBoxFor(x => x.TakipKodu, new { @class = "form-control" })*@
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Aciklama, "", new { @style = "color:red;" })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Personel)
+    @Html.TextBoxFor(x => x.Personel, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Personel, "", new { @style = "color:red;" })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Alici)
+    @Html.TextBoxFor(x => x.Alici, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Alici, "", new { @style = "color:red;" })
+    <br />
+    @Html.LabelFor(x => x.AliciMail)
+    @Html.TextBoxFor(x => x.AliciMail, new { @class = "form-control", type="email" })
+    @Html.ValidationMessageFor(x => x.AliciMail, "", new { @style = "color:red;" })
+    <br />
+    <button class="btn btn-info" id="Btn1">Kaydet</button>
+</form>
+

@@ -1,0 +1,40 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<FaturaKalem>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Kalemleri Sayfası</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"></li>
+</ol>
+<br />
+<table id="tbl1" class="table table-bordered table-hover" style="cursor: pointer;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Açıklama</th>
+            <th>Miqdar</th>
+            <th>Birim Fiyat</th>
+            <th>Tutar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@(Model.IndexOf(item) +1)</td>
+            <td>@item.Aciklama</td>
+            <td>@item.Miktar</td>
+            <td>@item.BirimFiyat</td>
+            <td>@item.Tutar</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="~/Fatura/YeniFtKl/@ViewBag.ft" class="btn btn-info">Yeni Kalem girisi</a>
+

@@ -1,0 +1,37 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "sifarislerim";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<h2>Sifarislerim</h2>
+<br />
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün</th>
+            <th>Tarih</th>
+            <th>Personel</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.Urun.UrunAd</td>
+                <td>@Convert.ToDateTime(item.Tarih).ToString("dd/MM/yyyy")</td>
+                <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+                <td>@item.Adet</td>
+                <td>@item.Urun.SatisFiyat</td>
+                <td>@item.ToplamTutar</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

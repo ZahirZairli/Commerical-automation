@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@{
+    var grafik = new Chart(width: 500, height: 500);
+    grafik.AddTitle(text: "Kategoryalar ve Mehsul sayi");
+    grafik.AddLegend(title: "Dəyərlər");
+
+    grafik.AddSeries(
+        name: "Veriler",
+        //chartType: "Bubble",
+        chartType: "Pie",
+        //chartType: "Doughnut",
+        //chartType: "Area",
+        //chartType: "Bar",
+        xValue: new[] { "Beyaz Esya", "Tv", "Bilgisayar", "Kucuk ev aleti" },
+        yValues: new[] { 500, 250, 340, 620 }
+        );
+
+    grafik.Write();
+
+}

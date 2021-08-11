@@ -1,0 +1,47 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personeller</h2>
+<hr />
+<br />
+<div style="width: 100%;">
+    <div class="container">
+        <table id="tbl1" class="table table-bordered table-hover" style="margin-top: 20px;cursor: pointer;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>Görsel</th>
+                    <th>Departman</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                    <th>Satışları</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(Model.IndexOf(item)+1)</td>
+                        <td>@item.PersonelAd</td>
+                        <td>@item.PersonelSoyad</td>
+                        <td><img style="width: 200px;height: 100px;" src="@item.PersonelGorsel" /></td>
+                        <td>@item.Departman.DepartmanAd</td>
+                        <td><a href="~/Personel/PersonelSil/@item.PersonelId" class="btn btn-success">Sil</a></td>
+                        <td><a href="~/Personel/PersonelGuncelle/@item.PersonelId" class="btn btn-success">Güncelle</a></td>
+                        <td><a href="~/Departman/DepartmanPersonelSatis/@item.PersonelId" style="background-color: lightcoral;color: white;" class="btn btn-success">Satışları</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>
+<a href="~/Personel/PersonelEkle" class="btn btn-info">Yeni personel</a>
+

@@ -1,0 +1,28 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<Xeberler>
+<h3 class="bg-info" style="text-align: center;">Son 5 Xəbər</h3>
+<hr />
+@foreach (var item in Model)
+{
+    <div class="timeline timeline-inverse">
+        <div class="time-label">
+            <span class="bg-danger">
+                @Convert.ToDateTime(item.Tarih).ToString("dd/MM/yyyy")
+            </span>
+        </div>
+        <div>
+            <i class="fas fa-envelope bg-primary"></i>
+            <div class="timeline-item">
+                <span class="time">
+                    <i class="far fa-clock"></i>
+                    @Convert.ToDateTime(item.Tarih).ToString("t")
+                </span>
+                <h3 class="timeline-header"><a href="#">@item.Paylaşan:</a> @item.Basliq </h3>
+                <div class="timeline-body">
+                    @item.Aciklama
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

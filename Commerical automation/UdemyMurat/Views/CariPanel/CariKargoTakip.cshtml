@@ -1,0 +1,45 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "CariKargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+
+<br />
+<h2>Kargo takip</h2>
+<hr />
+@if (ViewBag.karekodsekil != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 style="margin: auto;background-color:rebeccapurple;margin-top: 35%;margin-left: 50%;padding: 10px;border-radius: 10px;">QR-kodu>>></h2>
+            </div>
+            <div class="col-md-6">
+                <img src="@ViewBag.karekodsekil" alt="" style="width: 400px;height:400px;float:right;" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<table id="tbl1" class="table table-bordered table-hover" style="margin-top: 20px;cursor: pointer;">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Açıqlama</th>
+            <th>Tarix</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.Aciklama</td>
+                <td>@Convert.ToDateTime(item.TarihZaman).ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+

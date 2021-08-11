@@ -1,0 +1,43 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Cariler</h2>
+<hr />
+<br />
+<table id="tbl1" class="table table-bordered table-hover" style="margin-top: 20px;cursor: pointer;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soy Ad</th>
+            <th>Şehir</th>
+            <th>Mail</th>
+            <th>Durum</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.CariAd</td>
+                <td>@item.CariSoyad</td>
+                <td>@item.CariSehir</td>
+                <td>@item.CariMail</td>
+                <td>@item.Durum</td>
+                <td><a href="~/Cari/CariSil/@item.CariId" class="btn btn-danger">Sil</a></td>
+                <td><a href="~/Cari/CariGetir/@item.CariId" class="btn btn-success">Güncelle</a></td>
+                <td><a href="~/Cari/MusteriSatis/@item.CariId" class="btn btn-success">Satış geçmişi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="~/Cari/YeniCari" class="btn btn-primary">Yeni Cari Ekle</a>

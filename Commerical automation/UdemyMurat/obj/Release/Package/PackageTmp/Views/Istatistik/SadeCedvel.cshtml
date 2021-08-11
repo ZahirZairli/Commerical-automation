@@ -1,0 +1,173 @@
+﻿@model IEnumerable<UdemyMurat.Models.Sınıflar.GrupSinif>
+@{
+    ViewBag.Title = "SadeCedvel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    var a = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 3 | Simple Tables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Sürətli Baxış Cədvəlləri</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Kateqoriya cədvəli</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Kateqoriya Adı</th>
+                                                <th>Progress Bar</th>
+                                                <th style="width: 40px">Miqdar</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>Beyaz Esya</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-danger">55%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.</td>
+                                                <td>Telefon</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="progress-bar bg-warning" style="width: 70%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-warning">70%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3.</td>
+                                                <td>Kucuk Ev Aleti </td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar bg-primary" style="width: 30%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-primary">30%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4.</td>
+                                                <td>Bilgisayar</td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar bg-success" style="width: 90%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-success">90%</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @Html.Action("Partial1", "Istatistik")
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Müştəri şəhər cədvəli</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Şəhər</th>
+                                                <th>Progress Bar</th>
+                                                <th style="width: 40px">Say</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                a++;
+                                                <tr>
+                                                    <td>@a</td>
+                                                    <td>@item.Şəhər</td>
+                                                    <td>
+                                                        @if (item.Ədəd >= 1 && item.Ədəd <= 3)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar progress-bar-danger" style="width: @item.Ədəd%"></div>
+                                                            </div>
+                                                        }
+                                                        else if (item.Ədəd >= 4 && item.Ədəd <= 6)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar bg-warning" style="width: @item.Ədəd%"></div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="progress progress-xs progress-striped active">
+                                                                <div class="progress-bar bg-green" style="width: @item.Ədəd%"></div>
+                                                            </div>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (item.Ədəd >= 1 && item.Ədəd <= 3)
+                                                        {
+                                                            <span class="badge bg-danger">@item.Ədəd</span>
+                                                        }
+                                                        else if (item.Ədəd >= 4 && item.Ədəd <= 6)
+                                                        {
+                                                            <span class="badge bg-warning">@item.Ədəd</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-green">@item.Ədəd</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            @Html.Action("Partial4", "Istatistik")
+                        </div>
+                    </div>
+                    @Html.Action("Partial2", "Istatistik")
+                    @Html.Action("Partial3", "Istatistik")
+                </div>
+            </section>
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
+    </div>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>
+

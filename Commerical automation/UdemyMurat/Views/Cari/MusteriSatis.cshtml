@@ -1,0 +1,43 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "MusteriSatis";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Musteri Satis</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Musteri adi:@ViewBag.mus</li>
+</ol>
+<table id="tbl1" style="cursor: pointer;" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Satış İd</th>
+            <th>Ürün</th>
+            <th>Personel</th>
+            <th>Fiyat</th>
+            <th>Adet</th>
+            <th>Toplam</th>
+            <th>Tarih</th>
+            <th>Yazdır</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.Urun.UrunAd</td>
+                <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+                <td>@item.Fiyat</td>
+                <td>@item.Adet</td>
+                <td>@item.ToplamTutar</td>
+                <td>@item.Tarih</td>
+                <td><a href="#" class="btn btn-default" style="background-color: dodgerblue;">Yazdır</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,210 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Onlayn ticari otomasyon</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="~/web/css/styles.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">Admin Panel</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        @*<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Axtar..." aria-label="Axtar..." aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+            </div>
+        </form>*@
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="~/CariPanel/LogOut">Çıkış yap</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Əməliyyalar</div>
+                        @if (User.IsInRole("A"))
+                        {
+                        <a class="nav-link" href="~/Kategori/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Kategoriler
+                        </a>
+                        <a class="nav-link" href="~/Kategori/Deneme">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Kategoriler Ajax
+                        </a>
+                        }
+                        <a class="nav-link" href="~/Urun/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-beer"></i></div>
+                            Mehsullar
+                        </a>
+                        <a class="nav-link" href="~/Departman/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Departmanlar
+                        </a>
+                        <a class="nav-link" href="~/Departman/Xeber">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Xəbərlər
+                        </a>
+                        <a class="nav-link" href="~/Cari/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Musteriler
+                        </a>
+                        <a class="nav-link" href="~/Personel/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Isciler
+                        </a>
+                        <a class="nav-link" href="~/Personel/Personelaktiv">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            Aktiv Isciler
+                        </a>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
+                            Qrafikler
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                    Qrafik novleri
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="~/Grafik/Index5">Column qrafik</a>
+                                        <a class="nav-link" href="~/Grafik/Index6">Line qrafik</a>
+                                        <a class="nav-link" href="~/Grafik/Index7">Pie qrafik</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+
+                        <div class="sb-sidenav-menu-heading">Rapor & fatura</div>
+                        <a class="nav-link" href="~/Satis/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-taxi"></i></div>
+                            Satışlar
+                        </a>
+                        <a class="nav-link" href="~/Fatura/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
+                            Faturalar
+                        </a>
+                        <a class="nav-link" href="~/Fatura/dinamik">
+                            <div class="sb-nav-link-icon"><i class="fas fa-money-bill"></i></div>
+                            Dinamik Faturalar
+                        </a>
+                        @*<a class="nav-link" href="index.html">
+            <div class="sb-nav-link-icon"><i class="fas fa-plane"></i></div>
+            Fatura kalemler
+        </a>*@
+                        @*<a class="nav-link" href="index.html">
+            <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
+            Giderler
+        </a>*@
+                        <a class="nav-link" href="~/Istatistik/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-database"></i></div>
+                            İstatistikler
+                        </a>
+                        <a class="nav-link" href="~/Alert/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                            Alertler
+                        </a>
+                        <a class="nav-link" href="~/Galeri/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-image"></i></div>
+                            Galeri
+                        </a>
+                        <a class="nav-link" href="~/Kargo/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-pie"></i></div>
+                            Kargo
+                        </a>
+                        <a class="nav-link" href="~/UrunDetay/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-database"></i></div>
+                            Ürün detayı
+                        </a>
+                        <a class="nav-link" href="~/Istatistik/SadeCedvel">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shipping-fast"></i></div>
+                            Sürətli baxış
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main style="padding: 20px;">
+                @RenderBody()
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/web/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/web/assets/demo/chart-area-demo.js"></script>
+    <script src="~/web/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="~/web/js/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var table = $('#tbl1').DataTable({
+                lengthChange: false,
+                buttons: ['copy', 'excel', 'csv', 'pdf', 'colvis']
+            });
+            table.buttons().container()
+                .appendTo('#tbl1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+</body>
+</html>
+

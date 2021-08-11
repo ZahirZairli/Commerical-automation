@@ -1,0 +1,43 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<KargoDetay>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+<br />
+<h2>Departmanlar</h2>
+<hr />
+<br />
+@using (Html.BeginForm("KargoTakip", "CariPanel", FormMethod.Get))
+{
+    <p>Kargo Takip nomresi : @Html.TextBox("p")</p>
+    <input type="submit" value="Axtar" />
+}
+<br />
+<table id="tbl1" class="table table-bordered table-hover" style="margin-top: 20px;cursor: pointer;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Personel</th>
+            <th>Alici</th>
+            <th>Tarix</th>
+            <th>Takip Kodu</th>
+            <th>Detaylar</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.Personel</td>
+                <td>@item.Alici</td>
+                <td>@Convert.ToDateTime(item.Tarih).ToString("dd/MM/yyyy")</td>
+                <td>@item.TakipKodu</td>
+                <td><a href="~/CariPanel/CariKargoTakip/@item.TakipKodu" style="background-color: lightcoral;color: white;" class="btn btn-success">Detaylar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

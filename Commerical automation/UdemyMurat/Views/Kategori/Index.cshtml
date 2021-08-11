@@ -1,0 +1,47 @@
+﻿
+@using UdemyMurat.Models.Sınıflar
+@model List<Kategori>
+@*@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Kategori>*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Kategoriler</h2>
+<hr />
+<br />
+<br />
+<table id="tbl11" class="table table-bordered table-hover" style="margin-top: 20px;cursor: pointer;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kategori Ad</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.IndexOf(item)+1)</td>
+                <td>@item.KategoriAd</td>
+                <td><a href="~/Kategori/KategoriSil/@item.KategoriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="~/Kategori/KategoriGetir/@item.KategoriID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="~/Kategori/KategoriEkle" class="btn btn-primary">Yeni kateqori</a>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#tbl11').dataTable({});
+</script>

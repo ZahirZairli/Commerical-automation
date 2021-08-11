@@ -1,0 +1,36 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<Cariler>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Musteriler</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table style="cursor: pointer;" class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Soyad</th>
+                            <th>Seher</th>
+                            <th>Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.CariId</td>
+                            <td>@item.CariAd</td>
+                            <td>@item.CariSoyad</td>
+                            <td>@item.CariSehir</td>
+                            <td>@item.CariMail</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

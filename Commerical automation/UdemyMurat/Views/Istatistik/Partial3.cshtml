@@ -1,0 +1,38 @@
+﻿@using UdemyMurat.Models.Sınıflar
+@model List<Urun>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Mehsul bilgileri</h3>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mehsul Adi</th>
+                            <th>Marka</th>
+                            <th>Stok</th>
+                            <th>Alis Fiyat</th>
+                            <th>Satis Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.UrunId</td>
+                            <td>@item.UrunAd</td>
+                            <td>@item.Marka</td>
+                            <td>@item.Stok</td>
+                            <td>@item.AlisFiyat $</td>
+                            <td>@item.SatisFiyat $</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

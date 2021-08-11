@@ -1,0 +1,39 @@
+﻿@model UdemyMurat.Models.Sınıflar.Faturalar
+@{
+    ViewBag.Title = "FaturaGuncelle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Fatura güncəlləmə Sayfası</h2>
+<hr />
+<br />
+@using (Html.BeginForm("FaturaGuncelle", "Fatura", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x=>x.FaturaId)
+    @Html.LabelFor(x => x.FaturaSeriNo)
+    @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.FaturaSiraNo)
+    @Html.TextBoxFor(x => x.FaturaSiraNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Tarih)
+    @Html.TextBoxFor(x => x.Tarih,
+                  new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Saat)
+    @Html.TextBoxFor(x => x.Saat, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.VergiDairesi)
+    @Html.TextBoxFor(x => x.VergiDairesi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TeslimEden)
+    @Html.DropDownListFor(x => x.TeslimEden, (List<SelectListItem>)ViewBag.dpr, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TeslimAlan)
+    @Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+</div>
+}
+
